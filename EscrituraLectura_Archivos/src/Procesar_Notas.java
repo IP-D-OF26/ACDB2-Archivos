@@ -3,11 +3,14 @@ import java.util.Scanner;
 
 public class Procesar_Notas {
     public static void main(String[] args) {
-        String datosNotas [][] = LeerArchivo_Matriz("NotasIn.csv", 11, 3);
-        
+        String datosNotas [][] = leerArchivo_Matriz("NotasIn.csv", 10, 3);
     }
-    
-    public static String [][] LeerArchivo_Matriz(String nombreArchivo, int m, int n){
+    public static String [][] procesarNotas_Matriz(String datosNotas[][], int n){
+        String datos[][] = new String[datosNotas.length][n];
+        
+        return datos;
+    }
+    public static String [][] leerArchivo_Matriz(String nombreArchivo, int m, int n){
         String datos[][] = new String[m][n];
         try {
             Scanner fin = new Scanner(new File(nombreArchivo));
