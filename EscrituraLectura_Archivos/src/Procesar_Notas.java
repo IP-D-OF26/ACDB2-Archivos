@@ -15,9 +15,9 @@ public class Procesar_Notas {
             fout.format("%s\n", "NOMRES;NOTAS1;NOTAS2;PROMEDIO;SUPLE;ESTADO");
             for (int i = 0; i < notasIn.length; i++) {
                 for (int j = 0; j < notasIn[0].length; j++) 
-                    fout.format("%", notasIn[i][j]);
+                    fout.format("%s;", notasIn[i][j]);
                 for (int j = 0; j < notasOut[0].length; j++) 
-                    fout.format("%", notasOut[i][j]);
+                    fout.format("%s;", notasOut[i][j]);
                 fout.format("%s", "\n");
             }
             fout.close();
