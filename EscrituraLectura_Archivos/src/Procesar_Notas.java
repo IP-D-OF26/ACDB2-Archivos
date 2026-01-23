@@ -1,4 +1,5 @@
 import java.io.File;
+import java.util.Formatter;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -6,14 +7,22 @@ public class Procesar_Notas {
     public static void main(String[] args) {
         String notasIn [][] = leerArchivo_Matriz("NotasIn.csv", 10, 3);
         String notasOut [][] = procesarNotas_Matriz(notasIn, 3);
-        for (int i = 0; i < notasOut.length; i++) {
-            for (int j = 0; j < notasOut[0].length; j++) {
-                System.out.print(notasOut[i][j] + " ");
-            }
-            System.out.println("");
-        }
+        persistirResultados("NotasOut.csv", notasIn, notasOut);
     }
     public static void persistirResultados(String nombreArchivoOut, String notasIn [][], String notasOut [][]){
+        try {
+            Formatter fout = new Formatter(new File(nombreArchivoOut));
+            fout.format("%s\n", "NOMRES;NOTAS1;NOTAS2;PROMEDIO;SUPLE;ESTADO");
+            for (int i = 0; i < notasIn.length; i++) {
+                for (int j = 0; j < notasIn[0].length; j++) 
+                    fout.format("%", notasIn[i][j]);
+                for (int j = 0; j < notasOut[0].length; j++) 
+                    fout.format("%", notasOut[i][j]);
+                fout.format("%s", "\n");
+            }
+            fout.close();
+        } catch (Exception e) {
+        }
     }
     public static String [][] procesarNotas_Matriz(String datosNotas[][], int n){
         String datosOut[][] = new String[datosNotas.length][n];
